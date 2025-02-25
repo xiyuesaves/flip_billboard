@@ -1,0 +1,18 @@
+{
+  "name": "wallpaper",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.85.1",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "animejs": "^3.2.2"
+  }
+}

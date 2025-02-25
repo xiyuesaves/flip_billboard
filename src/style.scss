@@ -1,0 +1,95 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #1d1d1d;
+  overflow: hidden;
+}
+
+:root {
+  --prism-length: 6;
+  --prism-width: 100vw; // 窗口尺寸
+  --prism-height: 100vh; // 窗口尺寸
+  --perspective-value: 100vh; // 视差
+  --side-length: calc(var(--prism-width) / var(--prism-length));
+  --center-height: calc(var(--side-length) * 1.73205080756888 / 6);
+}
+.prism {
+  width: var(--prism-width);
+  height: var(--prism-height);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .triangular-prism-border {
+    perspective: var(--perspective-value);
+    position: relative;
+    width: var(--side-length);
+    height: var(--prism-height);
+    top: 0;
+    left: 0;
+    .triangular-prism {
+      transform-style: preserve-3d;
+      height: 100%;
+      width: 100%;
+      transform: translateZ(calc(var(--center-height) * -1)) rotateY(0deg);
+      .face {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        overflow: hidden;
+        z-index: 100;
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 11;
+          background: var(--shadow);
+        }
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: calc(var(--count) * var(--side-length) * -1);
+          width: var(--prism-width);
+          height: var(--prism-height);
+          background-size: cover;
+          background-position: center;
+          background-image: inherit;
+          z-index: 10;
+        }
+        &.front {
+          background-image: var(--bgimg-1);
+          transform: translateZ(var(--center-height));
+        }
+        &.left {
+          background-image: var(--bgimg-2);
+          transform: rotateY(-120deg) translateZ(var(--center-height));
+        }
+        &.right {
+          background-image: var(--bgimg-3);
+          transform: rotateY(120deg) translateZ(var(--center-height));
+        }
+      }
+    }
+  }
+}
