@@ -1,4 +1,7 @@
 import "./style.scss";
+import pic1 from "../pic1.jpg";
+import pic2 from "../pic2.jpg";
+import pic3 from "../pic3.jpg";
 import anime from "animejs/lib/anime.es.js";
 
 window.addEventListener("resize", () => {});
@@ -14,9 +17,9 @@ let play = 0;
 style.innerHTML = `
 :root {
   --prism-length: ${splitNum};
-  --bgimg-1: url('./pic2.jpg');
-  --bgimg-2: url('./pic1.jpg');
-  --bgimg-3: url('./pic3.jpg');
+  --bgimg-1: url('${pic2}');
+  --bgimg-2: url('${pic1}');
+  --bgimg-3: url('${pic3}');
 }
 `;
 
