@@ -56,7 +56,6 @@ let page = 0;
 let animation;
 function nextPage() {
   play = 1;
-  console.log(page);
   return new Promise((resolve) => {
     animation = anime({
       targets: prismList,
@@ -94,7 +93,6 @@ function nextPage() {
 
 // 空格暂停
 document.addEventListener("keydown", (e) => {
-  console.log(e.key, animation);
   if (e.key === " " && play) {
     if (animation.paused) {
       animation.play();
