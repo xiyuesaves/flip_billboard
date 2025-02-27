@@ -17,17 +17,13 @@ body {
   overflow: hidden;
 }
 
-:root {
-  --prism-length: 6;
-  --prism-width: 100vw; // 窗口尺寸
-  --prism-height: 100vh; // 窗口尺寸
-  --perspective-value: 100vh; // 视差
+.prism {
+  --perspective-value: 2000px; // 视差
   --side-length: calc(var(--prism-width) / var(--prism-length));
   --center-height: calc(var(--side-length) * 1.73205080756888 / 6);
-}
-.prism {
   width: var(--prism-width);
   height: var(--prism-height);
+  background-color: #1d1d1d;
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -87,6 +83,7 @@ body {
         opacity: 1;
         overflow: hidden;
         z-index: 100;
+        backface-visibility: hidden;
         &::after {
           content: "";
           display: block;
