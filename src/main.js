@@ -6,15 +6,14 @@ import Wallpaper from "./Wallpaper";
 
 const wallpaper = new Wallpaper(document.querySelector("#app"), 48, [pic1, pic2, pic3]);
 const ms = 1000;
-const CHANGE_TIME = 60;
+const CHANGE_TIME = 0;
 let changetime = CHANGE_TIME * ms;
-
+let timeout = null;
 async function loop() {
-  await new Promise((resolve) => setTimeout(resolve, changetime));
   await wallpaper.nextPic();
-  loop();
+  timeout = setTimeout(loop, changetime);
 }
-loop();
+loop()
 
 window.wallpaperPropertyListener = {
   applyUserProperties: function (properties) {
@@ -25,11 +24,15 @@ window.wallpaperPropertyListener = {
       } else {
         changetime = parseInt(properties.changetime.value) * ms;
       }
+      clearTimeout(timeout);
+      timeout = setTimeout(loop, changetime);
+      console.log("更新间隔", changetime);
     }
   },
   userDirectoryFilesAddedOrChanged: function (propertyName, changedFiles) {
-    console.log(propertyName, changedFiles);
+    console.log("更新图片列表", changedFiles);
     wallpaper.pics = changedFiles.map((item) => `file:///${item}`);
+    wallpaper.index = 0;
     wallpaper.updatePic();
   },
 };

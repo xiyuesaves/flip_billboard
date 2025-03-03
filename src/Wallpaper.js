@@ -63,10 +63,16 @@ class Wallpaper {
   initDOM() {
     const rootNode = '<div class="prism"><div class="mask after-pic"></div><div class="mask before-pic"></div></div>';
     const borderNode =
-      '<div class="triangular-prism-border"><div class="triangular-prism"><div class="face front"></div><div class="face left"></div><div class="face right"></div></div></div>';
+      '<div style="z-index:{{zIndex}}" class="triangular-prism-border"><div class="triangular-prism"><div class="face front"></div><div class="face left"></div><div class="face right"></div></div></div>';
     const domparser = new DOMParser();
     const prism = domparser.parseFromString(rootNode, "text/html").querySelector(".prism");
-    prism.insertAdjacentHTML("beforeend", borderNode.repeat(this.splitNum));
+    prism.insertAdjacentHTML(
+      "beforeend",
+      new Array(this.splitNum)
+        .fill(borderNode)
+        .map((item, index) => item.replace("{{zIndex}}", this.splitNum - index))
+        .join("")
+    );
     this.el.appendChild(prism);
     return {
       root: prism,
