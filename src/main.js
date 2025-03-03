@@ -11,3 +11,16 @@ async function loop() {
   loop();
 }
 loop();
+
+window.wallpaperPropertyListener = {
+  applyUserProperties: function (properties) {
+    console.log(properties);
+    if (properties.yourproperty) {
+      // Do something with yourproperty
+    }
+    if (properties.anotherproperty) {
+      // Do something with anotherproperty
+    }
+    // Add more properties here
+  },
+};
