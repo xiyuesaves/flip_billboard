@@ -5,8 +5,9 @@ import pic3 from "../pic3.svg";
 import Wallpaper from "./Wallpaper";
 
 const wallpaper = new Wallpaper(document.querySelector("#app"), 48, [pic1, pic2, pic3]);
+const ms = 1000;
 const CHANGE_TIME = 60;
-let changetime = CHANGE_TIME;
+let changetime = CHANGE_TIME * ms;
 
 async function loop() {
   await new Promise((resolve) => setTimeout(resolve, changetime));
@@ -20,17 +21,15 @@ window.wallpaperPropertyListener = {
     console.log(properties);
     if (properties.changetime && parseInt(properties.changetime.value) !== changetime) {
       if (isNaN(parseInt(properties.changetime.value))) {
-        changetime = CHANGE_TIME;
+        changetime = CHANGE_TIME * ms;
       } else {
-        changetime = parseInt(properties.changetime.value);
+        changetime = parseInt(properties.changetime.value) * ms;
       }
     }
   },
   userDirectoryFilesAddedOrChanged: function (propertyName, changedFiles) {
     console.log(propertyName, changedFiles);
-    wallpaper.pics = changedFiles.map(item => `file:///${item}`);
-  },
-  userDirectoryFilesRemoved: function (propertyName, removedFiles) {
-    console.log(propertyName, removedFiles);
+    wallpaper.pics = changedFiles.map((item) => `file:///${item}`);
+    wallpaper.updatePic();
   },
 };
