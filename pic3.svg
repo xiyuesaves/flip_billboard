@@ -1,0 +1,41 @@
+<svg width="3440" height="1440" viewBox="0 0 3440 1440" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f38d28;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fc644d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 渐变背景 -->
+  <rect width="100%" height="100%" fill="url(#gradient)"/>
+  
+  <!-- 居中文字 -->
+  <text x="50%" y="42%" 
+        fill="white" 
+        font-size="86" 
+        font-family="Arial, sans-serif" 
+        text-anchor="middle" 
+        dominant-baseline="middle">
+    请选择图片
+  </text>
+
+    <!-- 居中文字 -->
+  <text x="50%" y="50%" 
+        fill="white" 
+        font-size="86" 
+        font-family="Arial, sans-serif" 
+        text-anchor="middle" 
+        dominant-baseline="middle">
+    Please select a picture
+  </text>
+
+    <!-- 居中文字 -->
+  <text x="50%" y="58%" 
+        fill="white" 
+        font-size="86" 
+        font-family="Arial, sans-serif" 
+        text-anchor="middle" 
+        dominant-baseline="middle">
+    写真を選択してください
+  </text>
+</svg>
